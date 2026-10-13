@@ -19,8 +19,19 @@ export default function App() {
   const [pickup, setPickup] = useState("");
   const [destination, setDestination] = useState("");
   const [fare, setFare] = useState("500");
+  const [rideType, setRideType] = useState("Economy");
+  const rideCategories = [
+    { name: "Economy", description: "Affordable everyday rides", fare: 500 },
+    { name: "Comfort", description: "Extra comfort for your trip", fare: 800 },
+    { name: "Premium", description: "A premium travel experience", fare: 1200 },
+  ];
   const [message, setMessage] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+
+  function selectRide(category) {
+    setRideType(category.name);
+    setFare(String(category.fare));
+  }
 
   function handleRideRequest(e) {
     e.preventDefault();
@@ -167,6 +178,23 @@ export default function App() {
                   placeholder="Where are you going?"
                   required
                 />
+              </div>
+
+              <label className="fare-label">CHOOSE YOUR RIDE</label>
+              <div className="ride-categories">
+                {rideCategories.map((category) => (
+                  <button
+                    key={category.name}
+                    type="button"
+                    className={`ride-category ${rideType === category.name ? "selected" : ""}`}
+                    onClick={() => selectRide(category)}
+                    aria-pressed={rideType === category.name}
+                  >
+                    <strong>{category.name}</strong>
+                    <span>{category.description}</span>
+                    <b>Rs. {category.fare}</b>
+                  </button>
+                ))}
               </div>
 
               <label htmlFor="fare" className="fare-label">YOUR OFFER (PKR)</label>

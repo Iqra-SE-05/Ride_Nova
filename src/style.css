@@ -772,3 +772,85 @@ input:focus-visible {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* RideNova ride category cards */
+.ride-categories {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 12px 0 20px;
+}
+
+.ride-category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  padding: 14px 11px;
+  border: 1px solid #dfe7e2;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #18372d;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ride-category:hover {
+  border-color: #9acb50;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(24, 55, 45, 0.08);
+}
+
+.ride-category.selected {
+  border: 2px solid #8bc34a;
+  padding: 13px 10px;
+  background: #f3fae9;
+  box-shadow: 0 5px 16px rgba(139, 195, 74, 0.14);
+}
+
+.ride-category strong {
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.ride-category span {
+  color: #6b7c73;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.ride-category b {
+  margin-top: auto;
+  font-size: 14px;
+  color: #294b37;
+}
+
+@media (max-width: 480px) {
+  .ride-categories {
+    gap: 7px;
+  }
+
+  .ride-category {
+    padding: 11px 7px;
+    border-radius: 11px;
+  }
+
+  .ride-category.selected {
+    padding: 10px 6px;
+  }
+
+  .ride-category strong {
+    font-size: 12px;
+  }
+
+  .ride-category span {
+    font-size: 10px;
+  }
+
+  .ride-category b {
+    font-size: 12px;
+  }
+}
